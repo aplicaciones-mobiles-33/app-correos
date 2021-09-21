@@ -1,15 +1,16 @@
-<ion-button fill="clear">Latest first</ion-button>
-<ion-button fill="clear">Oldest first</ion-button>
+<ion-button (click)="asc()" fill="clear">Latest first</ion-button>
+<ion-button (click)="desc()" fill="clear">Oldest first</ion-button>
 <ion-grid>
-
 
   <ion-row>
     
     <ion-col>
       <ion-reorder-group id="reordena" disabled="false">
-     <ion-item *ngFor="let correo of correos">
+        <ion-row *ngFor="let correo of correosFiltrados">
+
+     <ion-item *ngIf="!correo.leido">
       <ion-reorder slot="end"></ion-reorder>
-      <ion-card  *ngIf="!correo.leido">
+      <!--ion-card  *ngIf="!correo.leido"-->
         <div>
           <ion-grid>
             <ion-row>
@@ -23,10 +24,18 @@
                
               </ion-col>
               <ion-col size="10"  class="alinear-texto--izquierda">
-               <ion-card-title>Hola, mundo</ion-card-title>
+              <ion-card-title>{{correo.titulo}}</ion-card-title>
+               <!--ion-card-title>Hola, mundo</ion-card-title-->
                <ion-card-content>
-                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                  {{correo.contenido}}
                </ion-card-content>
+               <!--ion-card-content>
+                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+               </ion-card-content-->
+               <ion-card-content>
+                 {{correo.fechaRecibido}}
+               </ion-card-content>
+               <!--ion-card-content></ion-card-content-->
               </ion-col>
             </ion-row>
            <ion-row>
@@ -41,14 +50,14 @@
         </div>
       
         
-      
+      </ion-item>
         
-      </ion-card>
-     </ion-item>
-  
+      <!--/ion-card-->
+     <!--/ion-item-->
+  </ion-row>
+
     </ion-reorder-group>
     </ion-col>
   </ion-row>
  
 </ion-grid>
-
