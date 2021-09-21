@@ -15,8 +15,8 @@
   </ion-header>
 
   <div id="container">
-    <app-datepicker></app-datepicker>
-    <app-correos></app-correos>
+    <app-datepicker (fecha)="CorreosComponent.buscando($event)"></app-datepicker>
+    <app-correos #CorreosComponent></app-correos>
   
   </div>
 </ion-content>
